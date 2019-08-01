@@ -1,0 +1,36 @@
+/*
+**Variables
+*/
+//VVV This is the name of the library that the files get compiled into
+NAME = push_swap.a
+//VVV the flags when compiling
+CFLAGS	= -Wall -Werror -Wextra -I. -c
+//VVV The source files AKA all the .c files
+SRC = name.c \
+	  name.c \
+	  name.c
+//VVV Converts all the .c files to .o and then sets OBJ equal to the .o files
+OBJ	= $(SRC:%.c=%.o)
+
+/*
+**Commands
+*/
+//VVV This is the first command in the makefile therefore it will run automatically when you type "make" in the terminal
+all: $(NAME)
+//VVV Creates the library with the name variable and all the .o files
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+//VVV Compiles the program with the flags and all the source files
+$(OBJ): $(SRC)
+	gcc $(CFLAGS) $(SRC)
+
+//VVV Removes all the .o files
+clean:
+	rm -f $(OBJ)
+
+//VVV Runs the clean command which removes .o files and removes the .a file
+fclean: clean
+	rm -f $(NAME)
+
+//VVV if you run re then it will run fclean which removes .a and .o files then recompiles everything
+re: fclean all

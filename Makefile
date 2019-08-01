@@ -2,7 +2,7 @@ NAME = push_swap.a
 CFLAGS	= -Wall -Werror -Wextra -I. -c
 SRC = name.c \
 	  name.c \
-	  name.c
+	  name.c \
 
 OBJ	= $(SRC:%.c=%.o)
 
@@ -17,7 +17,7 @@ $(OBJ): $(SRC)
 clean:
 	rm -f $(OBJ)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
